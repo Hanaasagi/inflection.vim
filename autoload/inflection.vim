@@ -20,14 +20,8 @@ function! s:ask_format_name()
                 \ 'c': 'camelize',
                 \ 'C': 'Camelize',
                 \ '-': 'dasherize',
-                \ 'h': 'humanize',
-                \ 'o': 'ordinal',
-                \ 'O': 'ordinalize',
-                \ 'p': 'parameterize',
                 \ 'P': 'pluralize',
                 \ 'S': 'singularize',
-                \ 't': 'tableize',
-                \ 'T': 'titleize',
                 \ }
 
     echom 'Select Inflection (' . join(keys(s:shortcuts)) . '):'
