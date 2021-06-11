@@ -1,0 +1,3 @@
+[submodule "autoload/vendor/inflection"]
+	path = autoload/vendor/inflection
+	url = https://github.com/jpvanhal/inflection.git
