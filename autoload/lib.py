@@ -43,4 +43,4 @@ def inflect_current_word(to_format):
     func = _dispatch(to_format)
     current_word = vim.eval('expand("<cword>")')
     new_word = func(current_word)
-    vim.command("normal! ciW{}".format(new_word))
+    vim.command("normal! ciw{}".format(new_word))
