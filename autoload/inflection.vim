@@ -41,7 +41,11 @@ endfunction
 
 
 function! inflection#inflect_current_word_in_insert_mode() abort
-    exec g:inf_py printf("inflect_current_word('''%s''')",  s:ask_format_name())
+    exec g:inf_py printf("inflect_current_word('''%s''', True)",  s:ask_format_name())
+    :startinsert
+    if charclass(getline(".")[col(".") - 1]) == 2
+        call cursor( line('.'), col('.') + 1)
+    endif
 endfunction
 
 function! inflection#inflect_visaul_block() abort
