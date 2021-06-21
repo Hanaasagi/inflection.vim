@@ -37,7 +37,7 @@ Edit the `vimrc` file, and add following code. You can change the keybinding as 
 ```vim
 command! Inflection call inflection#inflect_current_word()
 command! -range InflectionVisual call inflection#inflect_visaul_block()
-inoremap <C-l> <ESC>h y:call inflection#inflect_current_word_in_insert_mode()<CR>
+inoremap <C-l> <ESC>:call inflection#inflect_current_word_in_insert_mode()<CR>
 ```
 
 ## Inflection Form
