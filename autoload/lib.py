@@ -39,8 +39,16 @@ def _dispatch(name):
         return inflection.titleize
 
 
-def inflect_current_word(to_format):
+def inflect_current_word(to_format, focus_end=False):
     func = _dispatch(to_format)
+    _, *cursor_pos, _, _ = vim.eval("getcursorcharpos()")
+    assert len(cursor_pos) == 2
     current_word = vim.eval('expand("<cword>")')
+
     new_word = func(current_word)
+    length_diff = len(new_word) - len(current_word)
+    cursor_pos[1] = str(int(cursor_pos[1]) + length_diff + 1)
+
     vim.command("normal! ciw{}".format(new_word))
+    if focus_end:
+        vim.command("call setcursorcharpos({}, {})".format(*cursor_pos))
