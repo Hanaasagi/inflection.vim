@@ -30,9 +30,37 @@ Depend on the package manager you are using. Give an example of manual installat
 git clone --depth=1 --recursive https://github.com/Hanaasagi/inflection.vim ~/.vim/bundle/inflection.vim
 ```
 
+For Lazy.nvim user.
+
+```Lua
+{
+    "Hanaasagi/inflection.vim",
+    config = function()
+        vim.api.nvim_create_user_command(
+            "Inflection",
+            "call inflection#inflect_current_word()",
+            {}
+        )
+
+        vim.api.nvim_create_user_command(
+            "InflectionVisual",
+            "call inflection#inflect_visaul_block()",
+            { range = 0 }
+        )
+        vim.keymap.set(
+            "i",
+            "<C-l>",
+            [[<ESC>:call inflection#inflect_current_word_in_insert_mode()<CR>]],
+            { silent = false, noremap = true, desc = "inflect a word"}
+        )
+    end,
+},
+
+```
+
 ## Usage
 
-Edit the `vimrc` file, and add following code. You can change the keybinding as you want.
+For vim user, edit the `vimrc` file, and add following code. You can change the keybinding as you want.
 
 ```vim
 command! Inflection call inflection#inflect_current_word()
