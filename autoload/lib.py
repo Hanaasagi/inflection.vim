@@ -41,6 +41,9 @@ def _dispatch(name):
 
 def inflect_current_word(to_format, focus_end=False):
     func = _dispatch(to_format)
+    if func is None:
+        return
+
     _, *cursor_pos, _, _ = vim.eval("getcursorcharpos()")
     assert len(cursor_pos) == 2
     current_word = vim.eval('expand("<cword>")')
